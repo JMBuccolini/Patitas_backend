@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
-const validator = require('validator')
+// const validator = require('validator')
 
-const newCatFormSchema = new Schema({
+const catFormSchema = new Schema({
 
     name:{
         type: String,
@@ -99,11 +99,8 @@ const newCatFormSchema = new Schema({
     pet_name:{
         type: String,
     },
-
-
-
-
-
-
-
 })
+
+const CatForm = model('CatForm', catFormSchema);
+
+module.exports = CatForm;
