@@ -5,6 +5,7 @@ const getDogsRouter = require('./routes/getDogsRouter');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const catAdoptionRouter = require('./routes/catAdoptionRouter');
+const adminRouter = require('./routes/adminRouter');
 const app = express();
 
 //database conection
@@ -25,6 +26,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 //routes
+app.use('/admin', adminRouter);
 app.use('/catadoption', catAdoptionRouter);
 app.use('/dogs', getDogsRouter);
 app.use('/cats', getCatsRouter);
