@@ -50,4 +50,19 @@ exports.post = async(req,res)=>{
     } catch (error) {
         console.log(error);
     }
-}
+};
+
+exports.getApprovedCatAdoption = async (_,res)=>{
+    try {
+        
+        const approved = await CatForm.countDocuments({approved: true})
+
+        res.status(200).json({
+            status: "success",
+            data:approved
+        })
+        
+    } catch (error) {
+        console.log(error)
+    }
+};
