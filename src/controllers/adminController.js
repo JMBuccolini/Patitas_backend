@@ -1,5 +1,6 @@
 const Cats = require('../models/Cats');
 const Dogs = require('../models/Dogs');
+const CatForm = require('../models/CatForm');
 
 exports.getAdoptedPets = async (_,res) =>{
     try {
@@ -13,5 +14,86 @@ exports.getAdoptedPets = async (_,res) =>{
         })
     } catch (error) {
         console.log(error)
+    }
+};
+
+exports.approvedCatAdoptionForm = async (_,res)=>{
+    try {
+        
+        const approved = await CatForm.countDocuments({approved: true})
+
+        res.status(200).json({
+            status: "success",
+            data:approved
+        })
+        
+    } catch (error) {
+        console.log(error)
+    }
+};
+
+exports.approveCatForm = async (req,res)=>{
+    try {
+        
+        const validate = await CatForm.findById({_id: req.params.id});
+        if (!validate){
+            return "No hay un formulario con ese id"; 
+        }
+        
+        const filter = {_id:req.params.id};
+        const update = {approved: true};
+    
+        const searchForm = await CatForm.findByIdAndUpdate(filter, update,{new:true});
+    
+        res.status(200).json({
+            satatus: "success",
+            data: 'done',
+        })
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+exports.adoptedCat = async (req,res)=>{
+    try {
+        
+        const validate = await Cats.findById({_id: req.params.id});
+        if (!validate){
+            return "No hay un gato con ese id"; 
+        }
+        
+        const filter = {_id:req.params.id};
+        const update = {adopted: true};
+    
+        const searchCat = await Cats.findByIdAndUpdate(filter, update,{new:true});
+    
+        res.status(200).json({
+            satatus: "success",
+            data: 'done',
+        })
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+exports.adoptedDog = async (req,res)=>{
+    try {
+        
+        const validate = await Dogs.findById({_id: req.params.id});
+        if (!validate){
+            return "No hay un perro con ese id"; 
+        }
+        
+        const filter = {_id:req.params.id};
+        const update = {adopted: true};
+    
+        const searchCat = await Dogs.findByIdAndUpdate(filter, update,{new:true});
+    
+        res.status(200).json({
+            satatus: "success",
+            data: 'done',
+        })
+    } catch (error) {
+        console.log(error);
     }
 };
