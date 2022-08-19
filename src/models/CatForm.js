@@ -100,7 +100,7 @@ const catFormSchema = new Schema({
         type: String,
     },
     approved:{
-        type: booleand,
+        type: Boolean,
         default: false,
     }
 })
