@@ -45,6 +45,10 @@ const provisSchema = new Schema({
     provi_of:{
         type: String,
         enum:['Gato','Perro'],
+    },
+    approved:{
+        type: Boolean,
+        default:false,
     }
 })
 
