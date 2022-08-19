@@ -99,6 +99,10 @@ const catFormSchema = new Schema({
     pet_name:{
         type: String,
     },
+    approved:{
+        type: booleand,
+        default: false,
+    }
 })
 
 const CatForm = model('CatForm', catFormSchema);
