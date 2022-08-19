@@ -66,3 +66,25 @@ exports.getApprovedCatAdoption = async (_,res)=>{
         console.log(error)
     }
 };
+
+exports.approveCatForm = async (req,res)=>{
+    try {
+        
+        const validate = await CatForm.findById({_id: req.params.id});
+        if (!validate){
+            return "No hay un formulario con ese id"; 
+        }
+        
+        const filter = {_id:req.params.id};
+        const update = {approved: true};
+    
+        const searchForm = await CatForm.findByIdAndUpdate(filter, update,{new:true});
+    
+        res.status(200).json({
+            satatus: "success",
+            data: 'done',
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
