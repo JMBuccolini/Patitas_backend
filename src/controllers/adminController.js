@@ -1,6 +1,7 @@
 const Cats = require('../models/Cats');
 const Dogs = require('../models/Dogs');
 const CatForm = require('../models/CatForm');
+const ProvisForm = require('../models/ProvisForm');
 
 exports.getAdoptedPets = async (_,res) =>{
     try {
@@ -92,6 +93,21 @@ exports.adoptedDog = async (req,res)=>{
         res.status(200).json({
             satatus: "success",
             data: 'done',
+        })
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+exports.approveProvi = async (req,res) =>{
+    try {
+        const filter= {_id:req.params.id};
+        const update={approved : true};
+        const approveProvi = await ProvisForm.findByIdAndUpdate(filter,update,{new:true});
+
+        res.status(200).json({
+            status: "success",
+            data:"done"
         })
     } catch (error) {
         console.log(error);
