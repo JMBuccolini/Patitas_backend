@@ -1,7 +1,10 @@
 const CatForm = require('../models/CatForm');
+const Cats = require('../models/Cats');
 
 exports.post = async(req,res)=>{
     try {
+        const {id} = req.params
+        const pet_name = await Cats.findById({_id:id})
         const newCatAdoption = await CatForm.create({
             name: req.body.name,
             age: req.body.age,
@@ -40,7 +43,7 @@ exports.post = async(req,res)=>{
             personal_alergies: req.body.personal_alergies,
             family_alergies: req.body.family_alergies,
             prev_exp: req.body.prev_exp,
-            pet_name: req.body.pet_name,
+            pet_name: pet_name.name,
         })
     res.status(201).json({
         status: "success",
