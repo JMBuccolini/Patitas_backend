@@ -51,6 +51,6 @@ exports.post = async(req,res)=>{
     })
 
     } catch (error) {
-        throw new Error(error)
+        console.log(error.message)
     }
 };
