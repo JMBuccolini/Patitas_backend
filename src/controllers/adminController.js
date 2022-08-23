@@ -14,7 +14,7 @@ exports.getAdoptedPets = async (_,res) =>{
             data: sum
         })
     } catch (error) {
-        console.log(error)
+        throw new Error(error)
     }
 };
 
@@ -29,7 +29,7 @@ exports.approvedCatAdoptionForm = async (_,res)=>{
         })
         
     } catch (error) {
-        console.log(error)
+        throw new Error(error)
     }
 };
 
@@ -51,7 +51,7 @@ exports.approveCatForm = async (req,res)=>{
             data: 'done',
         })
     } catch (error) {
-        console.log(error);
+        throw new Error(error)
     }
 };
 
@@ -73,7 +73,7 @@ exports.adoptedCat = async (req,res)=>{
             data: 'done',
         })
     } catch (error) {
-        console.log(error);
+        throw new Error(error)
     }
 };
 
@@ -95,7 +95,7 @@ exports.adoptedDog = async (req,res)=>{
             data: 'done',
         })
     } catch (error) {
-        console.log(error);
+        throw new Error(error)
     }
 };
 
@@ -110,6 +110,6 @@ exports.approveProvi = async (req,res) =>{
             data:"done"
         })
     } catch (error) {
-        console.log(error);
+        throw new Error(error)
     }
 };

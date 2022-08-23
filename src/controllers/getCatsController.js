@@ -23,7 +23,7 @@ exports.post = async (req,res)=>{
             data: newCat
         })
 } catch (error) {
-    console.log(error);
+    throw new Error(error)
     }
 };
 
@@ -35,7 +35,7 @@ exports.get = async (_,res)=>{
         res.json(getAllCats);
         
     } catch (error) {
-        console.log(error)
+        throw new Error(error)
     }
 }
 
@@ -52,7 +52,7 @@ exports.getOneCat = async (req,res)=>{
             
     
     } catch (error) {
-        console.log(error);
+        throw new Error(error)
     }
 }
 
