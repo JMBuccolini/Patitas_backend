@@ -30,7 +30,7 @@ app.use(express.json())
 app.use('/admin', adminRouter);
 app.use('/beprovi',provisRouter);
 app.use('/catadoption', catAdoptionRouter);
-// app.use('/dogadoption', dogAdoptionRouter);
+app.use('/dogadoption', dogAdoptionRouter);
 app.use('/dogs', getDogsRouter);
 app.use('/cats', getCatsRouter);
 
