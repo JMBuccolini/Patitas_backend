@@ -138,11 +138,9 @@ const catFormSchema = new Schema({
     },
     pet_name:{
         type: String,
-        require:true
     },
     approved:{
         type: Boolean,
-        require:true,
         default: false,
     }
 })
