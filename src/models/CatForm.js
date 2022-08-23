@@ -93,9 +93,11 @@ const catFormSchema = new Schema({
     },
     family:{
         type: String,
+        require:true
     },
     family_pets:{
         type: String,
+        require:true
     },
     room_access:{
         type: String,
@@ -103,34 +105,44 @@ const catFormSchema = new Schema({
     },
     permission:{
         type: String,
+        require:[true, 'Debes indicar si tienes permiso'],
         enum: ['Si','No'],
     },
     economy:{
         type: String,
+        require:true
     },
     travel:{
         type: String,
+        require:true
     },
     caretaker:{
         type: String,
+        require:true
     },
     occupation:{
-        type: String
+        type: String,
+        require:true
     },
     personal_alergies:{
         type: String,
+        require:true
     },
     family_alergies:{
         type: String,
+        require:true
     },
     prev_exp:{
         type: String,
+        require:true
     },
     pet_name:{
         type: String,
+        require:true
     },
     approved:{
         type: Boolean,
+        require:true,
         default: false,
     }
 })
