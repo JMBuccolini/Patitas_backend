@@ -20,8 +20,8 @@ const catsSchema = new Schema({
     description:{
         type: String,
     },
-    weight:{
-        type: Number,
+    size:{
+        type: String,
     },
     color:{
         type: String,
